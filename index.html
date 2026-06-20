@@ -77,7 +77,7 @@
             padding: 0 2rem;
         }
 
-        /* ===== CUSTOM CURSOR (optional, refined) ===== */
+        /* ===== CUSTOM CURSOR ===== */
         .cursor-dot,
         .cursor-outline {
             position: fixed;
@@ -116,7 +116,7 @@
             }
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER - UPDATED FOR CENTERED NAV ===== */
         .header {
             position: fixed;
             top: 0;
@@ -127,11 +127,12 @@
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
             border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             z-index: 1000;
             transition: var(--transition);
+            /* --- GRID LAYOUT FOR PERFECT CENTERING --- */
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
         }
         .header.sticky {
             padding: 1rem 5%;
@@ -139,6 +140,7 @@
         }
 
         .logo {
+            justify-self: start;
             font-size: 2.4rem;
             font-weight: 700;
             font-family: 'Space Grotesk', sans-serif;
@@ -153,6 +155,7 @@
         }
 
         .navbar {
+            justify-self: center;
             display: flex;
             gap: 3.6rem;
             align-items: center;
@@ -184,6 +187,7 @@
         }
 
         #menu-icon {
+            justify-self: end;
             font-size: 2.8rem;
             color: var(--text-primary);
             display: none;
@@ -880,6 +884,36 @@
         }
 
         @media (max-width: 868px) {
+            /* --- MOBILE HEADER OVERRIDES --- */
+            .header {
+                grid-template-columns: 1fr auto 1fr;
+                padding: 1.2rem 5%;
+            }
+            #menu-icon {
+                display: block;
+                justify-self: end;
+            }
+            .navbar {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 2rem 3%;
+                background: var(--bg-primary);
+                border-top: 1px solid var(--border-color);
+                flex-direction: column;
+                gap: 1.6rem;
+                justify-self: start; /* reset */
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar a {
+                font-size: 1.8rem;
+            }
+            /* --- END MOBILE HEADER --- */
+
             .home {
                 flex-direction: column;
                 text-align: center;
@@ -928,27 +962,6 @@
             .section-heading {
                 font-size: 3.2rem;
             }
-            #menu-icon {
-                display: block;
-            }
-            .navbar {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 2rem 3%;
-                background: var(--bg-primary);
-                border-top: 1px solid var(--border-color);
-                flex-direction: column;
-                gap: 1.6rem;
-                display: none;
-            }
-            .navbar.active {
-                display: flex;
-            }
-            .navbar a {
-                font-size: 1.8rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -989,8 +1002,7 @@
 
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
-        <!-- <a href="#home" class="logo">QA.<span>Port</span></a>
-        <i class="fa-solid fa-bars" id="menuIcon"></i> -->
+        <a href="#home" class="logo">QA.<span>Port</span></a>
         <nav class="navbar" id="navbar">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
@@ -999,6 +1011,7 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
+        <i class="fa-solid fa-bars" id="menuIcon"></i>
     </header>
 
     <!-- ===== HOME ===== -->
@@ -1011,8 +1024,9 @@
                 I <span class="typed-text" id="typedText"></span>
             </div>
             <p>
-                QA Engineer with 2+ years in fintech, passionate about breaking code so users don't have to.
-                Specialized in automation, API testing, and ensuring digital perfection.
+                QA Engineer with 2+ years in fintech, passionate about breaking
+                code so users don't have to. Specialized in automation, API testing,
+                and ensuring digital perfection.
             </p>
             <div class="home-actions">
                 <a href="https://drive.google.com/file/d/1J1AlO3_UVEvwTm7k5qwzjtWxMzlTVZh_/view?usp=sharing" target="_blank" class="btn">
@@ -1240,7 +1254,6 @@
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
         <div class="container">
-            
             <h2 class="section-heading">Get In <span>Touch</span></h2>
             <p class="section-sub">Have a project in mind or want to collaborate? Let's connect.</p>
             <div class="contact-wrap">
@@ -1249,11 +1262,10 @@
                     <p>
                         I'm always open to discussing new opportunities, interesting projects, or just
                         geeking out about testing and automation.
-                        
                     </p>
                     <div class="contact-item">
                         <i class="fa-solid fa-envelope"></i>
-                        <span>konersayan9@gmail.com</span>
+                        <span>konersayan98@gmail.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fa-solid fa-phone"></i>
@@ -1286,7 +1298,7 @@
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <p>&copy; 2026 Sayan Koner.<i class="fa-solid fa-heart" style="color:var(--accent-blue);"></i></p>
+        <p>&copy; 2025 Sayan Koner. Built with <i class="fa-solid fa-heart" style="color:var(--accent-blue);"></i></p>
         <div class="social">
             <a href="https://www.linkedin.com/in/sayan-koner-15d/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://github.com/sayankoner" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
@@ -1296,7 +1308,6 @@
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
-
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script>

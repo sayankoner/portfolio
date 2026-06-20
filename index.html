@@ -2,212 +2,1397 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Engineer Portfolio | Bug Hunter</title>
-    <meta name="description"
-        content="Portfolio of a Quality Assurance Engineer specializing in automation, manual testing, and bug hunting.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sayan Koner | QA Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Sayan Koner – QA Engineer specializing in automation, manual testing, and API validation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-primary: #0a0f1e;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --bg-card-hover: #1f2a3f;
+            --text-primary: #eef2f6;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #0ea5e9;
+            --accent-violet: #8b5cf6;
+            --accent-cyan: #22d3ee;
+            --accent-gradient: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --shadow-glow: 0 0 40px rgba(14, 165, 233, 0.08);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            cursor: default;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 10px;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== CUSTOM CURSOR (optional, refined) ===== */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s;
+        }
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-blue);
+        }
+        .cursor-outline {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid rgba(14, 165, 233, 0.4);
+            transition: width 0.25s, height 0.25s, border-color 0.25s;
+        }
+        .cursor-outline.hover {
+            width: 52px;
+            height: 52px;
+            border-color: var(--accent-violet);
+            background: rgba(139, 92, 246, 0.06);
+        }
+        @media (max-width: 768px) {
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+            body {
+                cursor: auto;
+            }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.6rem 5%;
+            background: rgba(10, 15, 30, 0.82);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .header.sticky {
+            padding: 1rem 5%;
+            background: rgba(10, 15, 30, 0.94);
+        }
+
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo span {
+            -webkit-text-fill-color: var(--text-primary);
+            background: none;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 3.6rem;
+            align-items: center;
+        }
+        .navbar a {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: var(--transition);
+        }
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--text-primary);
+        }
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+
+        #menu-icon {
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            display: none;
+            cursor: pointer;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.8rem;
+            background: var(--accent-gradient);
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--accent-blue);
+            color: var(--accent-blue);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+        }
+
+        /* ===== SECTION HEADINGS ===== */
+        .section-heading {
+            font-size: 4rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            text-align: center;
+            margin-bottom: 4.8rem;
+        }
+        .section-heading span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-sub {
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: -2.8rem auto 4.8rem;
+        }
+
+        /* ===== HOME ===== */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 12rem 5% 6rem;
+            background: radial-gradient(ellipse at 70% 10%, #141b33 0%, var(--bg-primary) 55%);
+            position: relative;
+            overflow: hidden;
+        }
+        .home::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.06), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .home-content {
+            flex: 1.2;
+            z-index: 2;
+        }
+        .home-content .badge {
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            background: rgba(14, 165, 233, 0.12);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            letter-spacing: 0.5px;
+            margin-bottom: 1.6rem;
+        }
+        .home-content h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+        .home-content h1 {
+            font-size: 5.6rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+        }
+        .home-content h1 .highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .home-content .typed-wrap {
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1.6rem;
+        }
+        .home-content .typed-wrap .typed-text {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .home-content p {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 3.2rem;
+            line-height: 1.8;
+        }
+        .home-actions {
+            display: flex;
+            gap: 1.6rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .home-actions .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 0.8rem;
+        }
+        .home-actions .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 4.4rem;
+            height: 4.4rem;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        .home-actions .social-links a:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+        }
+
+        .home-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+        .hero-orb {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: float 5s ease-in-out infinite;
+            box-shadow: 0 0 80px rgba(14, 165, 233, 0.15);
+        }
+        .hero-orb::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            opacity: 0.3;
+            filter: blur(40px);
+            z-index: -1;
+        }
+        .hero-orb i {
+            font-size: 12rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .hero-orb .ring {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: spin 20s linear infinite;
+        }
+        .hero-orb .ring:nth-child(2) {
+            inset: -40px;
+            animation-duration: 30s;
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 10rem 5%;
+            background: var(--bg-secondary);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1.6rem;
+        }
+        .about-text p {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.6rem;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.4rem;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1.6rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+        .stat-item .number {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-item .label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .about-code {
+            background: #0d1117;
+            border-radius: var(--radius-md);
+            padding: 2.4rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-code .code-header {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.6rem;
+        }
+        .about-code .code-header span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .about-code .code-header .r {
+            background: #ff5f56;
+        }
+        .about-code .code-header .y {
+            background: #ffbd2e;
+        }
+        .about-code .code-header .g {
+            background: #27c93f;
+        }
+        .about-code pre {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 1.3rem;
+            color: #e6e6e6;
+            line-height: 1.9;
+            overflow-x: auto;
+        }
+        .about-code .kw {
+            color: #c678dd;
+        }
+        .about-code .str {
+            color: #98c379;
+        }
+        .about-code .fn {
+            color: #61afef;
+        }
+        .about-code .var {
+            color: #e06c75;
+        }
+        .about-code .cmt {
+            color: #5c6370;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills {
+            padding: 10rem 5%;
+            background: var(--bg-primary);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.4rem;
+        }
+        .skill-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 2.8rem 2.4rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .skill-card:hover {
+            border-color: rgba(14, 165, 233, 0.3);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+        .skill-card .card-icon {
+            font-size: 2.8rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.2rem;
+        }
+        .skill-card h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .skill-tags span {
+            padding: 0.4rem 1.2rem;
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.12);
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .skill-tags span:hover {
+            background: rgba(14, 165, 233, 0.15);
+            color: var(--text-primary);
+            border-color: var(--accent-blue);
+        }
+        .skill-tags span .level {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-left: 0.4rem;
+        }
+
+        /* ===== EXPERIENCE ===== */
+        .experience {
+            padding: 10rem 5%;
+            background: var(--bg-secondary);
+        }
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 2rem 4rem 2rem;
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item:nth-child(odd) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 4rem;
+            padding-right: 0;
+        }
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+            padding-right: 4rem;
+            padding-left: 0;
+        }
+        .timeline-item .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0.6rem;
+            width: 14px;
+            height: 14px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--bg-secondary), 0 0 0 6px rgba(14, 165, 233, 0.15);
+            z-index: 2;
+        }
+        .timeline-item .timeline-content {
+            background: var(--bg-card);
+            padding: 2.4rem 2.8rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            transition: var(--transition);
+        }
+        .timeline-item .timeline-content:hover {
+            border-color: rgba(14, 165, 233, 0.25);
+            transform: translateY(-2px);
+        }
+        .timeline-content .tl-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .timeline-content .tl-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .timeline-content .tl-header .date {
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            background: rgba(34, 211, 238, 0.08);
+            padding: 0.2rem 1.2rem;
+            border-radius: 50px;
+        }
+        .timeline-content .company {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+        }
+        .timeline-content p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .timeline-content .tl-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+        }
+        .timeline-content .tl-tags span {
+            padding: 0.2rem 1rem;
+            background: rgba(14, 165, 233, 0.06);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects {
+            padding: 10rem 5%;
+            background: var(--bg-primary);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.4rem;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 2.8rem 2.4rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .project-card:hover {
+            border-color: rgba(14, 165, 233, 0.25);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+        .project-card .proj-icon {
+            font-size: 2.6rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.2rem;
+        }
+        .project-card h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+        .project-card p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .project-card .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+        }
+        .project-card .proj-tags span {
+            padding: 0.2rem 1rem;
+            background: rgba(139, 92, 246, 0.08);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(139, 92, 246, 0.12);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 10rem 5%;
+            background: var(--bg-secondary);
+        }
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .contact-info h3 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1.2rem;
+        }
+        .contact-info p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2.4rem;
+        }
+        .contact-info .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .contact-info .contact-item i {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border-radius: 50%;
+            font-size: 1.6rem;
+            color: var(--accent-blue);
+            border: 1px solid var(--border-color);
+        }
+        .contact-info .contact-item span {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 3.2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+        .contact-form .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.2rem 1.6rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.08);
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-muted);
+        }
+        .contact-form textarea {
+            grid-column: 1 / -1;
+            resize: vertical;
+            min-height: 140px;
+        }
+        .contact-form .btn {
+            grid-column: 1 / -1;
+            justify-self: start;
+            margin-top: 0.4rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 2.4rem 5%;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+        }
+        .footer p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+        .footer .social a {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-left: 1.6rem;
+            transition: var(--transition);
+        }
+        .footer .social a:hover {
+            color: var(--accent-blue);
+        }
+        .footer .back-top {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background: var(--bg-card);
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        .footer .back-top:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .home-content h1 {
+                font-size: 4.4rem;
+            }
+            .hero-orb {
+                width: 260px;
+                height: 260px;
+            }
+            .hero-orb i {
+                font-size: 9rem;
+            }
+            .about-grid {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 868px) {
+            .home {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 10rem;
+            }
+            .home-content p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .home-actions {
+                justify-content: center;
+            }
+            .home-actions .social-links {
+                margin-left: 0;
+            }
+            .home-visual {
+                margin-top: 3rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                justify-content: flex-start !important;
+            }
+            .timeline-item .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+            .timeline-item:nth-child(odd) {
+                padding-left: 50px !important;
+            }
+            .section-heading {
+                font-size: 3.2rem;
+            }
+            #menu-icon {
+                display: block;
+            }
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 2rem 3%;
+                background: var(--bg-primary);
+                border-top: 1px solid var(--border-color);
+                flex-direction: column;
+                gap: 1.6rem;
+                display: none;
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar a {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-content h1 {
+                font-size: 3.4rem;
+            }
+            .hero-orb {
+                width: 200px;
+                height: 200px;
+            }
+            .hero-orb i {
+                font-size: 7rem;
+            }
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-form .input-group {
+                grid-template-columns: 1fr;
+            }
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer .social a {
+                margin: 0 0.8rem;
+            }
+            .section-heading {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
 
-    <header class="header">
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
         <a href="#home" class="logo">QA.<span>Port</span></a>
-
-        <i class="fa-solid fa-bars" id="menu-icon"></i>
-
-        <nav class="navbar">
+        <i class="fa-solid fa-bars" id="menuIcon"></i>
+        <nav class="navbar" id="navbar">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
+    <!-- ===== HOME ===== -->
     <section class="home" id="home">
         <div class="home-content">
-            <h3>Hello, I'm a</h3>
-            <h1>QA Engineer</h1>
-            <h3>And I <span class="multiple-text"></span></h3>
-            <p>Ensuring digital perfection by breaking code so your users don't have to. Specialized in Automation,
-                Manual Testing, and Performance Engineering.</p>
-            <div class="social-media">
-                <!-- LinkedIn Profile Link -->
-                <a href="https://www.linkedin.com/in/sayan-koner-15d" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <!-- GitHub Profile Link -->
-                <a href="https://github.com/sayankoner" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <!-- Twitter and Email are commented out, leaving them as is -->
-                <!-- <a href="#"><i class="fa-brands fa-twitter"></i></a>
-    <a href="#"><i class="fa-solid fa-envelope"></i></a> -->
+            <div class="badge"><i class="fa-solid fa-bug" style="margin-right:6px;"></i> QA Engineer</div>
+            <h3>Hello, I'm</h3>
+            <h1>Sayan <span class="highlight">Koner</span></h1>
+            <div class="typed-wrap">
+                I <span class="typed-text" id="typedText"></span>
             </div>
-            <!-- Download CV Link (using target="_blank" to open PDF in a new tab) -->
-            <a href="https://drive.google.com/file/d/1z8bTS_gVxTVovsDDnkO1AmHTVD91-aod/view?usp=sharing" target="_blank"
-                rel="noopener noreferrer" class="btn">Download CV</a>
+            <p>
+                QA Engineer with 2+ years in fintech, passionate about breaking code so users don't have to.
+                Specialized in automation, API testing, and ensuring digital perfection.
+            </p>
+            <div class="home-actions">
+                <a href="https://drive.google.com/file/d/1J1AlO3_UVEvwTm7k5qwzjtWxMzlTVZh_/view?usp=sharing" target="_blank" class="btn">
+                    <i class="fa-solid fa-file-pdf"></i> Resume
+                </a>
+                <a href="#contact" class="btn btn-outline">Hire Me</a>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sayan-koner-15d/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/sayankoner" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="home-img">
-            <!-- We will use a CSS shape or an SVG here if no image is provided -->
-            <div class="glow-circle">
-                <i class="fa-solid fa-bug-slash icon-main"></i>
+        <div class="home-visual">
+            <div class="hero-orb">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <i class="fa-solid fa-bug-slash"></i>
             </div>
         </div>
     </section>
 
+    <!-- ===== ABOUT ===== -->
     <section class="about" id="about">
-        <div class="about-content">
-            <h2 class="heading">About <span>Me</span></h2>
-            <h3>Quality Assurance Specialist</h3>
-            <p>I don't just find bugs; I improve processes. With a keen eye for detail and a passion for seamless user
-                experiences, I bridge the gap between development and satisfaction. My approach combines technical
-                precision with user-centric thinking to deliver robust software solutions.</p>
-            <a href="#contact" class="btn">Let's Talk</a>
-        </div>
-        <div class="about-img">
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
+        <div class="container">
+            <h2 class="section-heading">About <span>Me</span></h2>
+            <p class="section-sub">A QA engineer who bridges the gap between development and flawless user experiences.</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Quality Assurance <span style="color:var(--accent-blue);">Specialist</span></h3>
+                    <p>
+                        I'm Sayan Koner, a QA Engineer with over 2 years of experience in the fintech domain.
+                        I specialize in manual &amp; automated testing for web, API, and mobile applications.
+                        My approach combines technical precision with a user-centric mindset to deliver robust,
+                        scalable software solutions.
+                    </p>
+                    <p>
+                        I've executed 500+ API test cases, built Selenium/Java automation suites, and reduced
+                        production defects by 30% through early test involvement and rigorous regression testing.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="number">2+</div>
+                            <div class="label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">500+</div>
+                            <div class="label">API Test Cases</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">30%</div>
+                            <div class="label">Defect Reduction</div>
+                        </div>
+                    </div>
                 </div>
-                <pre><code>
-<span class="keyword">const</span> <span class="var">qa Engineer</span> = {
-    <span class="key">name</span>: <span class="string">"Sayan Koner"</span>,
-    <span class="key">passion</span>: <span class="string">"Bug Free Code"</span>,
-    <span class="key">tools</span>: [<span class="string">"Selenium"</span>, <span class="string">"Cypress"</span>],
-    <span class="key">isHired</span>: <span class="keyword">true</span> // hopefully!
-};
-                </code></pre>
+                <div class="about-code">
+                    <div class="code-header">
+                        <span class="r"></span><span class="y"></span><span class="g"></span>
+                    </div>
+                    <pre><span class="cmt">// about-me.js</span>
+                        <span class="kw">const</span> <span class="var">qaEngineer</span> = {
+                        name: <span class="str">"Sayan Koner"</span>,
+                        title: <span class="str">"QA Engineer"</span>,
+                        experience: <span class="str">"2+ years in fintech"</span>,
+                        skills: [<span class="str">"Selenium"</span>, <span class="str">"Java"</span>, <span class="str">"Postman"</span>, <span class="str">"Appium"</span>],
+                        passion: <span class="str">"Bug-free code"</span>,
+                        <span class="fn">isHired</span>: <span class="kw">true</span>
+                    };</pre>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== SKILLS ===== -->
     <section class="skills" id="skills">
-        <h2 class="heading">My <span>Skills</span></h2>
-
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-robot"></i> Automation</h3>
-                <div class="skill-box">
-                    <div class="skill-tag">Selenium WebDriver</div>
-                    <div class="skill-tag">Cypress</div>
-                    <div class="skill-tag">Appium</div>
-                    <div class="skill-tag">Playwright</div>
-                    <div class="skill-tag">Java / Python</div>
+        <div class="container">
+            <h2 class="section-heading">Technical <span>Skills</span></h2>
+            <p class="section-sub">Tools &amp; technologies I work with daily to ensure quality at every stage.</p>
+            <div class="skills-grid">
+                <!-- Automation -->
+                <div class="skill-card">
+                    <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h4>Automation Testing</h4>
+                    <div class="skill-tags">
+                        <span>Selenium WebDriver <span class="level">★ ★ ★ ★ ★</span></span>
+                        <span>TestNG <span class="level">★ ★ ★ ★ ☆</span></span>
+                        <span>Page Object Model</span>
+                        <span>Appium <span class="level">★ ★ ★ ☆ ☆</span></span>
+                        <span>Playwright <span class="level">★ ★ ★ ☆ ☆</span></span>
+                        <span>Maven / Gradle</span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-clipboard-check"></i> Manual & API</h3>
-                <div class="skill-box">
-                    <div class="skill-tag">Postman</div>
-                    <div class="skill-tag">REST Assured</div>
-                    <div class="skill-tag">JIRA / zoho</div>
-                    <div class="skill-tag">Agile / Scrum</div>
-                    <div class="skill-tag">SQL</div>
+                <!-- API & Manual -->
+                <div class="skill-card">
+                    <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                    <h4>API &amp; Manual Testing</h4>
+                    <div class="skill-tags">
+                        <span>Postman <span class="level">★ ★ ★ ★ ★</span></span>
+                        <span>REST Assured <span class="level">★ ★ ★ ☆ ☆</span></span>
+                        <span>Burp Suite</span>
+                        <span>JMeter <span class="level">★ ★ ★ ☆ ☆</span></span>
+                        <span>Functional / Regression</span>
+                        <span>UAT / Smoke / Sanity</span>
+                    </div>
+                </div>
+                <!-- Dev & Tools -->
+                <div class="skill-card">
+                    <div class="card-icon"><i class="fa-solid fa-toolbox"></i></div>
+                    <h4>Dev &amp; Defect Mgmt</h4>
+                    <div class="skill-tags">
+                        <span>Java <span class="level">★ ★ ★ ★ ★</span></span>
+                        <span>Python <span class="level">★ ★ ★ ☆ ☆</span></span>
+                        <span>JIRA / Zoho</span>
+                        <span>Git</span>
+                        <span>CI/CD Pipelines</span>
+                        <span>Agile / Scrum</span>
+                    </div>
+                </div>
+                <!-- Domain -->
+                <div class="skill-card">
+                    <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <h4>Domain Expertise</h4>
+                    <div class="skill-tags">
+                        <span>Banking APIs</span>
+                        <span>Card Payments</span>
+                        <span>KYC / AML</span>
+                        <span>Cross-Border Payments</span>
+                        <span>Card Lifecycle Mgmt</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== EXPERIENCE ===== -->
     <section class="experience" id="experience">
-        <h2 class="heading">Work <span>Experience</span></h2>
-        <div class="timeline">
-            <!-- FIRST JOB ENTRY (Assistant QA Engineer) -->
-            <div class="timeline-item left-container">
-                <div class="timeline-img"><i class="fa-solid fa-briefcase"></i></div>
-                <div class="timeline-content">
-                    <h2>Assistant QA Engineer (Stylopay)</h2>
-                    <small>2024 - Present</small>
-                    <p>Results-driven QA leader and mentor who reduced regression testing time by 40% through developing
-                        robust UI (Selenium/Java) and API (Pytest/Postman) automation solutions and rigorous manual
-                        testing.</p>
-                    <span class="timeline-arrow"></span>
+        <div class="container">
+            <h2 class="section-heading">Work <span>Experience</span></h2>
+            <p class="section-sub">My professional journey in quality assurance and software testing.</p>
+            <div class="timeline">
+                <!-- Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3>QA Engineer</h3>
+                            <span class="date">Jun 2024 – Present</span>
+                        </div>
+                        <div class="company"><i class="fa-solid fa-building" style="margin-right:6px;color:var(--accent-blue);"></i> Stylopay · Kolkata, India</div>
+                        <p>
+                            Executed 500+ API test cases using Postman for authentication, transaction, and user profile
+                            services. Built Selenium/Java UI automation for card and admin portals, reducing regression
+                            testing time by 40%. Performed API security checks with Burp Suite and managed defects in JIRA.
+                        </p>
+                        <div class="tl-tags">
+                            <span>Postman</span><span>Selenium</span><span>Java</span><span>JIRA</span><span>Burp Suite</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- SECOND JOB ENTRY (Intern) - Moved inside the .timeline container -->
-            <div class="timeline-item right-container">
-                <div class="timeline-img"><i class="fa-solid fa-laptop-code"></i></div>
-                <div class="timeline-content">
-                    <h2> Intern</h2>
-                    <small>2024 - 2025</small>
-                    <p>Exploratory testing, bug tracking, and understanding the SDLC lifecycle.</p>
-                    <!-- Removed duplicate timeline-arrow span -->
-                    <span class="timeline-arrow"></span>
+                <!-- Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="tl-header">
+                            <h3>Intern</h3>
+                            <span class="date">2024 – 2025</span>
+                        </div>
+                        <div class="company"><i class="fa-solid fa-building" style="margin-right:6px;color:var(--accent-blue);"></i> Stylopay · Kolkata, India</div>
+                        <p>
+                            Gained hands-on experience in exploratory testing, bug tracking, and understanding the
+                            SDLC lifecycle. Collaborated with cross-functional teams to refine test strategies and
+                            improve product quality.
+                        </p>
+                        <div class="tl-tags">
+                            <span>Manual Testing</span><span>Bug Tracking</span><span>SDLC</span><span>Agile</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- <div class="timeline-item left-container">
-                <div class="timeline-img"><i class="fa-solid fa-graduation-cap"></i></div>
-                <div class="timeline-content">
-                    <h2> Intern</h2>
-                    <small>2024 - 2025</small>
-                    <p>Exploratory testing, bug tracking, and understanding the SDLC lifecycle.</p>
-                    <span class="timeline-arrow"></span>
-                </div> -->
-    </div>
-    </div>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-heading">Key <span>Projects</span></h2>
+            <p class="section-sub">Highlighting some of the impactful projects I've delivered.</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="proj-icon"><i class="fa-solid fa-university"></i></div>
+                    <h4>BAAS Banking Portal</h4>
+                    <p>
+                        Executed 500+ UI/API test cases for regulatory compliance, cross-border payments, and prefund
+                        remittance flows. Identified critical defects that significantly improved system reliability.
+                    </p>
+                    <div class="proj-tags">
+                        <span>API Testing</span><span>UI Automation</span><span>Compliance</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="proj-icon"><i class="fa-solid fa-credit-card"></i></div>
+                    <h4>HashDT Card &amp; Admin Portals</h4>
+                    <p>
+                        Developed Selenium/Java automation for card issuance, activation, status changes, and KYC flows
+                        across multiple browsers, reducing regression testing time by 40%.
+                    </p>
+                    <div class="proj-tags">
+                        <span>Selenium</span><span>Java</span><span>Regression</span><span>KYC</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="proj-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>API Penetration Testing</h4>
+                    <p>
+                        Identified security gaps (missing HSTS/CSP headers, weak rate limiting, verbose error messages)
+                        using Burp Suite and ffuf. Documented findings and collaborated with developers to implement fixes.
+                    </p>
+                    <div class="proj-tags">
+                        <span>Burp Suite</span><span>Security</span><span>OWASP</span><span>Pen Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
-        <!--
-      ACTION URL: This URL is provided by FormSubmit.co.
-      It automatically routes the form data to the email address specified in the action.
-      It uses a standard POST request.
-    -->
-        <form action="https://formsubmit.co/konersayan9@gmail.com" method="POST">
-
-            <!-- HIDDEN INPUT: Sends a thank you message after submission -->
-            <input type="hidden" name="_next" value="From submission Sussessfully!">
-
-            <!-- HIDDEN INPUT: Prevents a default success page and keeps the user on the site (optional, but good practice) -->
-            <input type="hidden" name="_autoresponse"
-                value="Thank you for reaching out! I will respond to your inquiry shortly.">
-
-            <div class="input-box">
-                <!-- Renamed 'Full Name' to 'Name' for FormSubmit compatibility -->
-                <input type="text" name="name" placeholder="Full Name" required>
-                <!-- Changed type to text and name to 'replyto' so formsubmit can use it as the reply-to address -->
-                <input type="email" name="email" placeholder="Email Address" required>
+        <div class="container">
+            <h2 class="section-heading">Get In <span>Touch</span></h2>
+            <p class="section-sub">Have a project in mind or want to collaborate? Let's connect.</p>
+            <div class="contact-wrap">
+                <div class="contact-info">
+                    <h3>Let's talk about <span style="color:var(--accent-blue);">quality</span></h3>
+                    <p>
+                        I'm always open to discussing new opportunities, interesting projects, or just
+                        geeking out about testing and automation.
+                    </p>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>konersayan98@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 89277 91558</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span><a href="https://www.linkedin.com/in/sayan-koner-15d/" target="_blank" style="color:var(--accent-blue);">linkedin.com/in/sayan-koner-15d</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-github"></i>
+                        <span><a href="https://github.com/sayankoner" target="_blank" style="color:var(--accent-blue);">github.com/sayankoner</a></span>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formsubmit.co/konersayan9@gmail.com" method="POST">
+                    <input type="hidden" name="_next" value="https://your-site.com/thanks.html" />
+                    <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I'll respond shortly." />
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder="Your Name" required />
+                        <input type="email" name="email" placeholder="Email Address" required />
+                        <input type="tel" name="mobile" placeholder="Phone Number" />
+                        <input type="text" name="_subject" placeholder="Subject" required />
+                        <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+                        <button type="submit" class="btn"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
+                    </div>
+                </form>
             </div>
-            <div class="input-box">
-                <!-- Added 'name' attribute for form submission -->
-                <input type="tel" name="mobile" placeholder="Mobile Number">
-                <!-- Added 'name' attribute for form submission -->
-                <input type="text" name="_subject" placeholder="Email Subject" required>
-            </div>
-            <!-- Added 'name' attribute for form submission -->
-            <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-
-            <input type="submit" value="Send Message" class="btn">
-        </form>
+        </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="footer-text">
-            <p>Copyright &copy; 2025 | Built by sayan Koner</p>
+        <p>&copy; 2025 Sayan Koner. Built with <i class="fa-solid fa-heart" style="color:var(--accent-blue);"></i></p>
+        <div class="social">
+            <a href="https://www.linkedin.com/in/sayan-koner-15d/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/sayankoner" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://drive.google.com/file/d/1J1AlO3_UVEvwTm7k5qwzjtWxMzlTVZh_/view?usp=sharing" target="_blank" aria-label="Resume"><i class="fa-regular fa-file-pdf"></i></a>
         </div>
-        <div class="footer-iconTop">
-            <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
-        </div>
+        <a href="#home" class="back-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></a>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // ===== TYPED.JS =====
+        new Typed('#typedText', {
+            strings: [
+                'hunt bugs.',
+                'automate tests.',
+                'ensure quality.',
+                'build reliability.',
+                'break & fix.'
+            ],
+            typeSpeed: 70,
+            backSpeed: 50,
+            backDelay: 1400,
+            loop: true,
+        });
+
+        // ===== SCROLL REVEAL =====
+        ScrollReveal({
+            reset: false,
+            distance: '50px',
+            duration: 1000,
+            delay: 120,
+            easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        });
+        ScrollReveal().reveal('.home-content, .section-heading, .section-sub', { origin: 'top', interval: 120 });
+        ScrollReveal().reveal('.hero-orb, .about-code, .skill-card', { origin: 'bottom', interval: 100 });
+        ScrollReveal().reveal('.about-text, .contact-info', { origin: 'left' });
+        ScrollReveal().reveal('.timeline-item, .project-card, .contact-form', { origin: 'right', interval: 120 });
+        ScrollReveal().reveal('.stat-item', { origin: 'bottom', interval: 80 });
+
+        // ===== CUSTOM CURSOR =====
+        (function() {
+            const dot = document.getElementById('cursorDot');
+            const outline = document.getElementById('cursorOutline');
+            if (!dot || !outline) return;
+
+            const onMouseMove = (e) => {
+                const x = e.clientX,
+                    y = e.clientY;
+                dot.style.left = x + 'px';
+                dot.style.top = y + 'px';
+                outline.style.left = x + 'px';
+                outline.style.top = y + 'px';
+            };
+
+            const onMouseOver = (e) => {
+                const target = e.target;
+                if (target.closest('a, button, .btn, .skill-tag, .social-links a, .navbar a, .back-top')) {
+                    outline.classList.add('hover');
+                } else {
+                    outline.classList.remove('hover');
+                }
+            };
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseover', onMouseOver);
+        })();
+
+        // ===== NAVBAR TOGGLE =====
+        const menuIcon = document.getElementById('menuIcon');
+        const navbar = document.getElementById('navbar');
+
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuIcon.classList.remove('fa-xmark');
+                navbar.classList.remove('active');
+            });
+        });
+
+        // ===== ACTIVE NAV LINK ON SCROLL =====
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.navbar a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 180;
+                if (window.scrollY >= top) {
+                    current = sec.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Sticky header
+            document.getElementById('header').classList.toggle('sticky', window.scrollY > 50);
+        });
+    </script>
 </body>
 
 </html>
